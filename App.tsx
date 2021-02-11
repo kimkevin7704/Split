@@ -3,26 +3,6 @@ import { View, Text, StyleSheet } from 'react-native';
 
 import MainStackNavigator from './src/navigations/Navigator';
 
-
-
-// Initialize Firebase
-// JOHN PLS FILL WITH FIREBASE INFO
-/*const firebase = require("firebase");
-const firebaseConfig = {
-	apiKey: "<FILL HERE JOHN>",
-	authDomain: "<>",
-	databaseURL: "<>",
-	storageBucket: "",
-};
-firebase.initializeApp(firebaseConfig);*/
-
-
-/*export default class App extends React.Component {
-  render() {
-    return <MainStackNavigator/>;
-  }
-}*/
-
 export default class App extends React.Component {
   render() {
     return (
