@@ -1,17 +1,22 @@
 import React, { Component } from 'react';
 import { Button, View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 
-function Login(props) {
-	const { navigation } = props
+
+
+
+function Login() {
 	return (
-		<View style={styles.container}>
+      <View style={styles.container}>
+        <Text>WOW SUCH LOGIN</Text>
+      </View>
+		/*<View style={styles.container}>
 			<Text style={styles.text}>Login Screen</Text>
       		<TouchableOpacity 
       			style={styles.buttonContainer} 
       			onPress={() => navigation.navigate('Home')}>
         		<Text style={styles.buttonText}>Go to Home</Text>
       		</TouchableOpacity>
-      	</View>
+      	</View>*/
 		)
 }
 
