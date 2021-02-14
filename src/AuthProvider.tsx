@@ -22,13 +22,14 @@ interface AuthProviderProps {}
 //access current user anywhere in application
 //THIS IS WHERE IS REPLACE WITH REDUX LATER
 export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
+    //if no user input, default is null
     const [user, setUser] = useState<User>(null);
-    
     
     return (
         <AuthContext.Provider value={{
             user,
             login: () => {
+                //HARD CODED FAKE USER INPUT
                 const fakeUser = { username: "bob" };
                 setUser(fakeUser);
                 AsyncStorage.setItem("user", JSON.stringify(fakeUser));

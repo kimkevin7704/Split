@@ -10,20 +10,35 @@ import { AuthContext } from '../AuthProvider';
 interface RoutesProps {}
 
 /*
-    KEVIN's NOTES 2/13/21
+    ==============KEVIN's NOTES 2/13/21===============
 
     Routes is the "App"
 
-    Providers lets us wrap the app with stuff like User
+    App has 
+
+    Providers lets us wrap the app with stuff 
+        that we can't access within the app (User Login State)
 
     AuthParamList lets us control what goes in the stack navigator
         holds types for navigation and route props
 
+    User is hard coded for now. Once user is detected,
+        user will stay 'online' until restart.
+        logout() in AuthProvider will remove the user entirely for now.
 
+    login button accesses login() in AuthProvider. 
+        can code backend here
+
+    Page structure will be fixed later.
+        functions Login() and Home() will be extracted
+        to other page files later.
+    
+    ==================================================
 */
 
 const Stack = createStackNavigator<AuthParamList>();
 
+//navigation prop holds AuthParamList and input 'screen'
 function Login({ navigation, route }: AuthNavProps<'Login'>) {
     const { login } = useContext(AuthContext)
     return(
@@ -32,6 +47,7 @@ function Login({ navigation, route }: AuthNavProps<'Login'>) {
             <Button
                 title="go to HOME"
                 onPress={() => {
+                    //reference: AuthParamList
                     navigation.navigate('Home')
                 }}
             />
@@ -70,8 +86,7 @@ export const Routes: React.FC<RoutesProps> = ({}) => {
         AsyncStorage.getItem('user')
             .then(userString => {
                 if (userString) {
-                    //login function in AuthProvider
-                    login();
+                    //if user is detected...
                 } 
                 setLoading(false);
                 console.log(userString);
@@ -92,20 +107,24 @@ export const Routes: React.FC<RoutesProps> = ({}) => {
     }
 
     //if user is detected, show 'you exist'
+    //if no user, show login page
     return(
         <NavigationContainer>
-            {user ? 
+            {
+            user ? 
                 <Center>
                     <Text>you exist</Text>
-                </Center> : 
-            <Stack.Navigator initialRouteName="Login">
-                <Stack.Screen name='Login' 
-                            options={{
-                                header: () => null
-                            }}
-                            component={Login} />
-                <Stack.Screen name='Home' component={Home} />
-            </Stack.Navigator>}
+                </Center> 
+            : 
+                <Stack.Navigator initialRouteName="Home">
+                    <Stack.Screen name='Login' 
+                                options={{
+                                    header: () => null
+                                }}
+                                component={Login} />
+                    <Stack.Screen name='Home' component={Home} />
+                </Stack.Navigator>
+            }
         </NavigationContainer>
     );
 }
