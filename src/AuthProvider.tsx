@@ -3,6 +3,10 @@ import React, { useState } from 'react'
 
 type User = null | { username: string };
 
+//login, logout functions left blank for future
+//Users are hard coded for now
+//AsyncStorage will deprecate in future? find alternatives (redux etc)
+
 export const AuthContext = React.createContext<{
     user: User,
     login: () => void

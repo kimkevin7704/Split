@@ -11,7 +11,14 @@ interface RoutesProps {}
 /*
     KEVIN's NOTES 2/13/21
 
-    Stack gets possible routes from AuthParamList
+    Routes is the "App"
+
+    Providers lets us wrap the app with stuff like User
+
+    AuthParamList lets us control what goes in the stack navigator
+        holds types for navigation and route props
+
+    
 
 
 

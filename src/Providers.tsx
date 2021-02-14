@@ -2,9 +2,7 @@ import React from 'react'
 import { AuthProvider } from './AuthProvider';
 import { Routes } from './navigations/Routes';
 
-interface ProvidersProps {
-
-}
+interface ProvidersProps {}
 
 
 //wrap entire APP in AuthProvider (Routes is the entire app right now)
