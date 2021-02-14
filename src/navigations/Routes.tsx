@@ -83,6 +83,7 @@ export const Routes: React.FC<RoutesProps> = ({}) => {
 
     useEffect(() => {
         //check if user is logged in or not
+        console.log('wtf');
         AsyncStorage.getItem('user')
             .then(userString => {
                 if (userString) {
@@ -113,7 +114,7 @@ export const Routes: React.FC<RoutesProps> = ({}) => {
             {
             user ? 
                 <Center>
-                    <Text>you exist</Text>
+                    <Text>{user.username} is signed in!</Text>
                 </Center> 
             : 
                 <Stack.Navigator initialRouteName="Home">
