@@ -11,7 +11,7 @@ interface RoutesProps {
 
 const Stack = createStackNavigator()
 
-function Login({navigation}) {
+function Login({ navigation }) {
     return(
         <Center>
             <Text>
@@ -27,7 +27,7 @@ function Login({navigation}) {
     )
 }
 
-function Home({navigation}) {
+function Home({ navigation }) {
     return(
         <Center>
             <Text>
@@ -47,7 +47,11 @@ export const Routes: React.FC<RoutesProps> = ({}) => {
     return(
         <NavigationContainer>
             <Stack.Navigator initialRouteName="Login">
-                <Stack.Screen name='Login' component={Login} />
+                <Stack.Screen name='Login' 
+                            options={{
+                                header: () => null
+                            }}
+                            component={Login} />
                 <Stack.Screen name='Home' component={Home} />
             </Stack.Navigator>
         </NavigationContainer>
